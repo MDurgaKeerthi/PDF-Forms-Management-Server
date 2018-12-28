@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Telephone forms</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=text], input[type=date],input[type=number],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+
+   <body>
+      <ul>
+         <li><a href="" class = "active">Create form</a></li>
+         <li><a href="/telephone/update">Update forms</a></li>   
+         <li><a href="/telephone/delete">Delete forms</a></li>
+         <li><a href="/telephone/display">Display forms</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:90%; margin:0 auto; border:0.5px solid black; padding:25px 20px 10px 20px;overflow-y:scroll;">
+         
+         <div >
+           <form action="insert" method="POST">
+             <label for="name_">Name</label>
+             <input type="text" id="name_" name="name" placeholder="Your Name..">
+
+             <label for="designation_">Designation</label>
+             <input type="text" id="designation_" name="designation" placeholder="Your Designation..">
+
+             <label for="department_">Department</label>
+             <input type="text" id="department_" name="department" placeholder="Your Department..">
+
+             <label for="id_">Employee ID</label>
+             <input type="text" id="id_" name="id" placeholder="Your ID..">
+
+             <label for="bill_">Bill amount</label>
+             <input type="number" id="bill_" name="bill" placeholder="Bill amount.." required>
+
+             <label for="date_">Date</label>
+             <input type="date" id="date_" name="date" ><br>
+
+             <label for="bank_">Bank name & branch</label>
+             <input type="text" id="bank_" name="bank" placeholder="Bank name & branch..">
+             
+             <label for="account_">Account number</label>
+             <input type="text" id="account_" name="account" placeholder="Account number.." >
+
+             <label for="ifsc_">IFSC code</label>
+             <input type="text" id="ifsc_" name="ifsc" placeholder="IFSC code..">
+             
+             <!--<label for="country">Country</label>
+             <select id="country" name="country">
+               <option value="australia">Australia</option>
+               <option value="canada">Canada</option>
+               <option value="usa">USA</option>
+             </select> -->
+           
+             <input type="submit" value="Submit">
+           </form>
+         </div>
+      </section> 
+   </body>
+</html>

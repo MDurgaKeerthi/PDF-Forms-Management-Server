@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travelling Allowance Bill</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+table {
+    border-collapse: collapse;
+    
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+</style>
+</head>
+
+   <body>
+      <ul>
+         <li><a href="/ta/" >Create form</a></li>
+         <!-- <li><a href="/telephone/update" >Update forms</a></li>    -->
+         <li><a href="/ta/delete">Delete forms</a></li>
+         <li><a href="" class = "active">Display forms</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:90%; margin:0 auto; border:0.5px solid black; padding:25px 20px 10px 20px; overflow-y:scroll;">
+         
+         <div >
+            <table border =1 align="center" style="width:100%;">
+            <tr><th>Form number</th>
+                <th>Employee ID</th>
+                <th>Date</th>
+                <th>Purpose of journey</th>
+                <th>Net admissible</th>
+                <th></th>
+             </tr>     
+		      {% for row in rows %}
+               <tr>
+             		<td>{{row[0]}}</td>
+                    <td>{{row[1]}}</td>
+                    <td>{{row[2]}}</td>
+                    <td>{{row[3]}}</td>
+                    <td>{{row[4]}}</td>
+                    <td><a href="{{url_for('ta_page.static',filename = 'downloads/'+ row[0]|string + '.pdf' )}}" target="_blank">Download</a></td>
+               </tr>
+            {% endfor %}
+		
+         </div>
+      </section> 
+   </body>
+</html>

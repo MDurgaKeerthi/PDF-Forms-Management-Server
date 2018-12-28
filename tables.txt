@@ -1,0 +1,20 @@
+database: cc_manager, user=root, password=123
+
+
+create table user( userid int not null auto_increment, username char(20) not null, password char(20) not null, ccs_count int not null, PRIMARY KEY(userid) );
+create table cc_statement( ccsid int not null auto_increment, ccsname char(40) not null, uploaded_date char(10) not null, uploader char(20) not null, no_of_bills int not null, PRIMARY KEY(ccsid));
+create table bills( billid int not null auto_increment, billname char(40) not null, transactionid int not null, ccsname char(40) not null, uploader char(20) not null, date char(10) not null, PRIMARY KEY(billid));
+create table transactions( transactionid int not null auto_increment, date char(20) not null default ".", ccs_no int not null, transactional_details char(50) not null,amount float not null, header char(20) not null, files_uploaded int not null, PRIMARY KEY(transactionid));
+
+create table telephone_forms (formnum int not null auto_increment, name char(30) , designation char(20) , department char(20) , id char(20) , bill int , date char(10) , bank char(30) , account char(20) , ifsc char(10) , primary key(formnum));
+
+CREATE TABLE reimbursement_forms(serial char(10) not null, date char(10) , cash int , firm char(40) , purpose char(40) , amount int , primary key(serial) );
+
+create table contingent_forms(formnum int not null auto_increment,dt1 char(10) ,des1 char(20) ,amt1 int ,dt2 char(20),des2 char(20),amt2 int,dt3 char(10),des3 char(20),amt3 int,dt4 char(10),des4 char(20),amt4 int,total int ,curr_date char(10) ,station char(20) ,name char(30) ,address char(50) ,bankbranch char(50) ,acnum char(20) ,ifsc char(10) , primary key(formnum));
+
+create table ta_forms(formnum int not null auto_increment,name varchar(100),s_rno varchar(50),designation varchar(50),department varchar(50),institute varchar(50),basic_pay varchar(50),inst_prjacno varchar(100),purposeofjourney varchar(200),dstn varchar(100),ddate varchar(100),dtime time,astn varchar(100),adt varchar(100),atime time,modeofjourney varchar(50),class varchar(50),road varchar(50),tktno varchar(100),fare varchar(100),total_claimed1 varchar(50),sno int,expenditure varchar(100),bill_details varchar(100),amt varchar(100),total_claimed2 varchar(100),enclosures varchar(100),pdate varchar(100),amt2 varchar(100),amt3 varchar(100),a_b varchar(100),adv_drawn varchar(100),net_claim varchar(100),paid_excess varchar(100),recovered_excess varchar(100),bname_branch varchar(100),ifsc varchar(100),acno varchar(100), primary key(formnum));
+
+CREATE TABLE travel_forms(formnum int not null auto_increment,name varchar(20) ,desigtn varchar(20),dept varchar(20) ,basic_p varchar(20) ,d_o_j1 date ,d_o_j2 date,p_o_j varchar(20),s_no varchar(20) ,c_o_j varchar(20),e_o_f varchar(20) ,acc_chrg varchar(20) ,exp varchar(20) ,details varchar(100) ,ad_req varchar(20) ,ta_no varchar(20) ,ta_ad varchar(90),rup varchar(100) ,b_name varchar(100) ,b_acc varchar(90) ,ifsc varchar(50), primary key(formnum));
+
+
+truncate tablename; --- to erase the fields in the table

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travel Advance forms</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=text], input[type=date],input[type=number],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+
+   <body>
+      <ul>
+         <li><a href="" class = "active">Create form</a></li>
+         <!-- <li><a href="/travel/update">Update forms</a></li>    -->
+         <li><a href="/travel/delete">Delete forms</a></li>
+         <li><a href="/travel/display">Display forms</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:90%; margin:0 auto; border:0.5px solid black; padding:25px 20px 10px 20px;overflow-y:scroll;">
+         
+         <div >
+           <h4><center>Approval For Tour And TA Advance</center></h4>
+                
+            <form action="insert" method="POST">
+            <table  style="width:100%;">
+            <tr><td>name</td><td><input type="text" name="name" size="4" ></td>
+            <td>Staff No./Roll No.</td><td><input type="text" name="s_no" size="4" ></td>
+            </tr>
+            <tr><td>Designation</td><td><input type="text" name="desigtn" size="4" ></td></tr>
+            <tr><td>Department</td><td><input type="text" name="dept" size="4" ></td></tr>
+            <tr><td>Basic Pay</td><td><input type="text" name="basic_p" size="4" ></td></tr>
+            <tr><td>Proposed dates of journey</td>
+                <td><input type="date" name="d_o_j1" size="4" ></td>
+                <td> to </td> 
+                <td><input type="date" name="d_o_j2" size="4" ></td>
+            </tr>
+            <tr><td>purpose of journey</td><td><input type="text" name="p_o_j" size="4" ></td></tr>
+            </tr>
+            </table>
+
+             <table style="width:100%;">
+             <tr><td>Proposed class of journey(ticket one):Air(Business/Economy)/Train(1AC/2AC/3AC/ACC/SL/CC)/Road(AC/NonAC)</td><td><input type="text" name="c_o_j" size="7"></tr>
+             <tr><td>Estimate of fare:one way/two way</td><td><input type="text" name="e_o_f" size="4" ></td></tr>
+             <tr><td>Estimated of Accomodation Charges:</td><td><input type="text" name="acc_chrg" size="4"></td></tr>
+             <tr><td>Estimated of Other Expenditures to be incured:<td><input type="text" name="exp" size="4"></tr>
+             <td>(details)<input type="text" name="details" size="4"></td></tr>
+             <tr><td>Total advance requested</td><td><input type="text" name="ad_req" size="4"></td></tr>
+             
+             </table>
+            
+                
+               
+            <table style="width:100%;">
+            <tr><td>TA Number<input type="text" name="ta_no" size="4"></td></tr>
+            <tr><td>Approved TA (number)<input type="text" name="ta_ad" size="4"></td></tr>
+            <tr><td>Approved TA (words)<input type="text" name="rup" size="4"></td></tr>
+            </table>
+
+            <table style="width:100%;">
+            <tr><td>Bank Name& Branch<input type="text" name="b_name" size="4"></td></tr>
+            <tr><td>Bank & Account Number<input type="text" name="b_acc" size="4"></td></tr>
+            <tr><td>IFSC Code<input type="text" name="ifsc" size="4"></td></tr>
+            
+            </table>
+
+            <input type="submit" value="submit">
+            </form>
+         </div>
+      </section> 
+   </body>
+</html>

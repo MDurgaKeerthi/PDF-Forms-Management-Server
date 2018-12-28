@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Travelling Allowance Bill</title>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input[type=text], input[type=date],input[type=number],select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+</style>
+</head>
+
+   <body>
+      <ul>
+         <li><a href="" class = "active">Create form</a></li>
+         <!-- <li><a href="/telephone/update">Update forms</a></li>    -->
+         <li><a href="/ta/delete">Delete forms</a></li>
+         <li><a href="/ta/display">Display forms</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:90%; margin:0 auto; border:0.5px solid black; padding:25px 20px 10px 20px;overflow-y:scroll;">
+         
+         <div >
+            <h2 style="color:orange;"><center>TRAVELLING ALLOWANCE BILL</center></h2>
+
+            <form action ="insert" method="POST">
+            <table style="width:100%"> 
+                     
+            <tr>
+                <td><center>Name: <input type = "text" name = "name"/></center></td>
+                <td><center>Staff No. / Roll No: <input type = "text" name ="s_rno"/></center></td>
+            </tr>
+            
+            <tr>
+                <td><center>Designation: <input type = "text" name = "designation" /></center></td>
+                <td><center>Department: <input type = "text" name = "department"/></center></td>
+            </tr>
+               
+            <tr>
+                <td><center>Institute: <input type = "text" name = "institute"/></center></td>
+                <td><center>Basic Pay (Rs. /month): <input type = "text" name = "basic_pay" /></center></td>
+            </tr>            
+                
+            <tr>
+                <td><center>Institute Account/Project Account No: <input type = "text" name = "inst_prjacno"/></center></td>
+                <td><center>Purpose of Journey: <input type = "text" name = "purposeofjourney"/></center></td>
+            </tr>
+                
+            </table>
+            <br>
+                
+            <table border=1>
+                <h3><center>A. Travelling Expenses Incurred</center></h3>
+                <thead>
+                    <tr>
+                        <th colspan= "3">Departure</th>
+                        <th colspan= "3">Arrival</th>
+                        <th>Mode of Journey (Air/Rail/Road)</th>
+                        <th>Class</th>
+                        <th>Road (Kms)</th>
+                        <th>Flight/Train Ticket No.</th>
+                        <th>Fare</th>
+                    </tr>
+                    <tr>
+                        <th>Station</th>
+                        <th>Date</th>
+                        <th>Hour</th>
+                        <th>Station</th>
+                        <th>Date</th>
+                        <th>Hour</th>
+                    </tr>
+                    
+                    <tr>
+                        <td><center><input type = "text" name = "dstn"/></center></td>
+                        <td><center><input type = "text" name = "ddate"></center></td>
+                        <td><center><input type = "time" name = "dtime"/></center></td>
+                        <td><center><input type = "text" name = "astn"/></center></td>
+                        <td><center><input type = "text" name = "adt"></center></td>
+                        <td><center><input type = "time" name = "atime"/></center></td>
+                        <td><center><input type = "text" name = "modeofjourney"/></center></td>
+                        <td><center><input type = "text" name = "class"/></center></td>
+                        <td><center><input type = "text" name = "road"/></center></td>
+                        <td><center><input type = "text" name = "tktno"/></center></td>
+                        <td><center><input type = "text" name = "fare"/></center></td>    
+                    </tr>
+                </thead>
+            </table>
+            <br>
+            
+            <table border=1>
+                <tr>
+                        <th>(A) Total Claimed(Rs.): <input type = "text" name ="total_claimed1"/></th>
+                </tr>      
+            </table>
+            <br>
+            
+            <table border=1>
+                <h3><center>B. Other Expenses Incurred</center></h3>
+                <thead>
+                    <tr>
+                        <th>S.No.</th>
+                        <th colspan ="4">Item of Expenditure</th>
+                        <th colspan = "4">Cash Bill Details</th> 
+                        <th colspan="2">Amount (Rs.)</th>
+                    </tr>
+                    <tr>
+                        <td><center><input type = "text" name = "sno"/></center></td>
+                        <td colspan="4"><center><input type = "text" name = "expenditure"/></center></td>
+                        <td colspan="4"><center><input type = "text" name = "bill_details"/></center></td>
+                        <td colspan="2"><center><input type = "text" name = "amt"/></center></td>
+                    </tr>
+                </thead>
+            </table>
+            <br>
+                    
+            <table border=1>
+                <tr>
+                    <th>(B) Total Claimed(Rs.): <input type = "text" name ="total_claimed2"/></th>
+                </tr>
+            </table>
+            <br>
+                
+            <p>No. of Enclosures: <input type="text" name="enclosures"></p>
+            <p>Date: <input type="text" name="pdate"></p>
+                
+            <table>
+                <tr>
+                    <td><center>Total Amount Admissible</center></td>
+                    <td><center>(A): <input type="text" name="amt2"/></center></td>
+                    <td><center>(B): <input type="text" name="amt3"/></center></td>
+                </tr>
+            </table>
+                
+            <p>(A + B): Rs. <input type="text" name="a_b"/></p>
+            <p>Advance Drawn (C): Rs. <input type="text" name="adv_drawn"/></p>
+            <p>Net Claim Admissible (A + B - C): Rs. <input type="text" name="net_claim"/></p>
+            <p>Excess to be paid by IITH: Rs. <input type="text" name="paid_excess"/></p>
+            <p>Excess to be recovered by IITH: Rs. <input type="text" name="recovered_excess"/></p>
+            <br>
+            
+            <p>Bank Name & Branch: <input type="text" name="bname_branch"/></p>
+            <p>IFS Code: <input type="text" name="ifsc"/></p>
+            <p>Account Number: <input type="text" name="acno"/></p>
+            <br>
+            
+            <p><center><input type ="submit" value ="Submit"/></center></p>
+                
+            </form>
+         </div>
+      </section> 
+   </body>
+</html>

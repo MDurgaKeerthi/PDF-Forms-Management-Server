@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+   function display(x,y){
+       if (x.style.display == 'none') {
+           x.style.display = 'block';
+           y.style.display = 'none';
+       } 
+    }
+</script>
+
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input,tag {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+   <body>
+      <ul>
+         <li><a href="/ccsm/" >Uploads</a></li>
+         <li><a href="" class = "active">Downloads</a></li>   
+         <li><a href="/ccsm/history">Uploads History</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:93.5%; margin:0 auto; border:0.5px solid black; padding:0px 15px 10px 15px;">
+      <h3 align="center">Choose to download</h3> 
+      <form action = "downloads/download_files" method = "POST" enctype = "multipart/form-data">
+        <INPUT TYPE=RADIO NAME="X" VALUE="excel" onclick="display(excel, bills);"/>select one of the Creditcard monthly statements for the excel file<br>
+        <div id="excel" style="display: none;"><fieldset align="center" style="margin-left:10%; margin-right:10%;">
+        <legend>all monthly statements</legend>
+        {% if param1 != () %}
+        <form action = "downloads/download_files" method = "POST" enctype = "multipart/form-data">
+        <table align="center">
+         <tr>
+            <th></th>
+            <th>File Id</th>
+            <th>File</th>
+            <th>File uploaded on</th>
+         </tr>
+        {% for key in param1 %}
+            <tr>
+            <td><input type="radio" name="fileid" value="{{key[0]}}">
+                <input type="hidden" name="filename" value="{{key[1]}}"></td>
+            <td>{{key[0]}}</td>
+            <td><a href="{{url_for('ccsm_page.static',filename='uploads/'+ key[1] )}}" target="_blank">Creditcard monthly statement</a></td>
+            <td>{{key[2]}}</td>
+            </tr>
+        {% endfor %}
+        </table><br>
+        <input type = "submit" value="submit"/>  
+        </form>    
+        {% else %}
+            Upload creditcard statements to see here.
+        {% endif %}   
+        </fieldset></div>
+        <INPUT TYPE=RADIO NAME="X" VALUE="pdf" onclick="display(bills,excel);"/>Merge pdfs of selected bills<br>
+        <div id="bills" style="display: none;"><fieldset align="center" style="margin-left:10%; margin-right:10%;">
+        <legend>all bills</legend>
+        {% if param2 != () %}
+        <form action = "mixpdf" method = "POST" enctype = "multipart/form-data">
+        <table align="center">
+         <tr>
+            <th></th>
+            <th>Bill Id</th>
+            <th>Transaction Id</th>
+            <th>Bill</th>
+            <th>Bill submitted on</th>
+         </tr>
+        {% for key in param2 %}
+            <tr>
+            <td><input type="checkbox" name="pdfid" value="{{key[0]}}">
+                <input type="hidden" name="pdfname" value="{{key[1]}}"></td>
+            <td>{{key[0]}}</td>
+            <td>{{key[2]}}</td>
+            <td><a href="{{url_for('ccsm_page.static',filename='bills/'+ key[1] )}}" target="_blank">see the bill</a></td>
+            <td>{{key[5]}}</td>
+            </tr>
+        {% endfor %}
+        </table><br>
+        <input type = "submit" value="submit"/>  
+        </form>    
+        {% else %}
+            Upload bills to see here.
+        {% endif %}   
+        </fieldset></div>
+      </form>
+      </section> 
+   </body>
+</html>

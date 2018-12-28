@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("div").click(function(){
+        var tagname = $(this).attr('id') 
+        $(tagname).toggle();
+    });
+});
+</script>
+<style>
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #f1f1f1;
+    position: fixed;
+    height: 100%;
+    overflow: auto;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+input,tag {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+   <body>
+	<script> 
+         function msg() { alert("File submitted successfully with id:{{fileid}}");} 
+         msg() 
+      </script>
+
+      <ul>
+         <li><a href="" class = "active">Uploads</a></li>
+         <li><a href="/ccsm/downloads">Downloads</a></li>   
+         <li><a href="/ccsm/history">Uploads History</a></li>
+         <li><a href="/show_menu">Back to menu</a></li>
+         <li><a href="/">logout</a></li>
+      </ul>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:93.5%; margin:0 auto; border:0.5px solid black; padding:0px 15px 10px 15px;">
+      <h3 align="center">Uploads Section</h3> 
+      <fieldset style="width:30%; background-color:#f1f1f1; border:0.5px solid black; padding:10px 30px;">
+      <legend >Upload new monthly statement</legend>
+      <form action = "upload" method = "POST" 
+               enctype = "multipart/form-data" >
+               <input type = "file" name = "file" required style="margin-top: 10px;"/><br>
+               <tag>Date:</tag><input type = "date" name = "today" required /><br>
+               <input type = "hidden" name = "filetype" value="ccs" />
+               <input type = "submit" style="margin-bottom: 2px;"/>
+      </form>
+      </fieldset>
+      <h3></h3>
+      <p1 style="margin-left: 10px;">Previous montly statements</p1>
+      <section style="height:59%; background-color:#f2f2f2; border:0.5px solid black; padding:10px; overflow-y:scroll;">
+
+      {% for key in param %}
+         {% if key != () %}
+            {% set ind = loop.index %}
+            {% set id_c = "id" + ind|string %}
+            {% set id_id = "." + id_c %}
+            <div id="{{id_id}}" style="padding:10px;">{{ind}}. CreditCard monthly statement: id={{key[ind][2]}} , uploaded on {{ccsnames[ind-1][2]}}</div>
+            <form action = "upload" method = "POST" enctype = "multipart/form-data" class={{id_c}}  style="display:none;"> 
+            <input type = "hidden" name = "filetype" value="bill" />
+            <input type = "hidden" name = "ccs_no" value="{{key[0][2]}}" />
+            <table class={{id_c}} align="center" style="display:none;">
+            <tr>
+               <th>Id</th>
+               <th>Dated-on</th>
+               <th>Transaction Details</th>
+               <th>Amount</th>
+               <th>Place</th>
+               <th>submit bill</th>
+               <th></th>
+            </tr>   
+            {% for value in key %}
+               <tr>
+                     <td> {{ value[0] }} </td>
+                     <td> {{ value[1] }} </td>
+                     <td> {{ value[3] }} </td>
+                     <td align="right"> {{ value[4] }} </td>
+                     <td> {{ value[5] }} </td>
+                     <td>
+                     <input type = "file" multiple name = "file[]" /> 
+                     <input type = "checkbox" name="transid" value={{value[0]}} />
+                      </td>
+                     {% if value[6] == 0 %} 
+                        <td>n</td>
+                     {% else %}
+                        <td>y</td>
+                     {% endif %}   
+               </tr>
+            {% endfor %}
+            </table><br>
+            <tag style=" margin-left:10%; ">Date:</tag><input type = "date" name = "today" required />
+            <input type = "submit" class={{id_c}} style="display:none; margin-left:20%;"/> 
+            </form><hr>
+            
+            {% endif %}
+         {% endfor %}
+      
+      </section>
+      </section> 
+   </body>
+</html>

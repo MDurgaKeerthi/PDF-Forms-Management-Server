@@ -1,0 +1,22 @@
+Install Mariadb
+
+cd server
+virtualenv .env
+source .env/bin/activate
+
+Install Python-Flask : pip install Flask
+Install Python-mysql.connector : pip install mysql-connector
+Install Python-xlsxwriter : pip install XlsxWriter
+Install Python-PyPDF2 : pip install pypdf2
+Install Python-pyPdf : pip install pypdf
+Install Python-reportlab : pip install reportlab
+
+pip install gunicorn
+
+deactivate
+
+change ip by doing sudo nano /etc/supervisor/conf.d/server.conf
+
+sudo supervisorctl reread
+sudo service supervisor restart
+sudo supervisorctl status

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Menu</title>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+    $("td").click(function(){
+        var tagname = $(this).attr('id') 
+        $(tagname).toggle();
+    });
+});
+</script>
+<style>
+input,tag {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: justify;
+    padding: 5px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>
+</head>
+   <body>
+     
+      
+      <section style="position:fixed; top:2.5%; left:1%; width:95%; height:93.5%; margin:0 auto; border:0.5px solid black; padding:10px 15px 10px 15px;">
+      <h2 align="center">Database Services</h2> 
+      
+      <h3></h3>
+      <h3 style="margin-left: 10px;">Choose one for appropriate info!</h3>
+      <section style="height:75%; background-color:#f2f2f2; border:0.5px solid black; padding:10px; overflow-y:scroll;">
+
+      <form action = "/select_menu" method = "POST" enctype = "multipart/form-data" class="menuclass" > 
+      <table >
+     
+      <tr><td id=".1">
+      <input type = "radio" name = "service" value="ccs" /> <span  >Manage credit card statements <br>
+      <ol class="1" align="left" style="display:none;">
+         <li> Upload monthly  credit card statement - adds entries into database  </li>   
+         <li> Upload bills for transactions </li>
+         <li> Download transactions as excel file </li>
+         <li> Merge bills and download as single pdf </li>
+         <li> Download previous monthly statements and bills </li>
+      </ol><br></span> 
+      </td></tr>
+      
+      <tr><td id=".2">
+      <input type = "radio" name = "service" value="rf" /> <span  >Manage reimbursement forms <br>
+      <ol class="2" style="display:none;">
+         <li> Submit a reimbursement form to database </li>   
+         <li> Update a submitted reimbursement form </li>
+         <li> Delete a submitted reimbursement form </li>
+         <li> View all the submitted reimbursement forms </li>
+      </ol><br></span> 
+      </td></tr>
+      
+      <tr><td id=".3">
+      <input type = "radio" name = "service" value="ta" /> <span >Manage travel allowance forms <br>
+      <ol class="3" style="display:none;">
+         <li> Please add the description </li>
+      </ol><br></span> 
+      </td></tr>
+      
+      <tr><td id=".4">
+      <input type = "radio" name = "service" value="telephone" /> <span >Manage telephone bill reimbursement forms<br>
+      <ol class="4" style="display:none;">
+         <li> Please add the description </li>
+      </ol><br></span> 
+      </td></tr>
+
+      <tr><td id=".5">
+      <input type = "radio" name = "service" value="contingent" /> <span >Manage contingency forms<br>
+      <ol class="5" style="display:none;">
+         <li> Please add the description </li>
+      </ol><br></span> 
+      </td></tr>
+
+      <tr><td id=".6">
+      <input type = "radio" name = "service" value="travel" /> <span >Manage travel advance forms<br>
+      <ol class="6" style="display:none;">
+         <li> Please add the description </li>
+      </ol><br></span> 
+      </td></tr>
+      
+      <!-- <tr><td id=".5">
+      <input type = "radio" name = "service" value="see_db" /> <span >See the database <br>
+      <ol class="5" style="display:none;">
+         <li> Tables linked to each service </li>
+         <li> View tables schema</li>
+         <li> Data in the tables </li>
+      </ol><br></span>
+      </td></tr>
+      
+      <tr><td id=".6">
+      <input type = "radio" name = "service" value="profile" /> <span >Change user profile <br>
+      <ol class="6" style="display:none;">
+         <li> change password/details </li>
+         <li> create new users </li>
+      </ol><br></span>
+      </td></tr> -->
+      
+      </table>
+      <br>
+      <input type = "submit" class="menuclass" style=" padding:5px"/> 
+      </form>
+            
+            
+      
+      </section>
+      </section> 
+   </body>
+</html>

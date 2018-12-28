@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Title</title>
+<link rel="stylesheet" href = "{{ url_for('static',filename='menu.css')}}">
+
+
+<style>
+input,tag {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #cccccc;
+    text-align: center;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+</style>
+</head>
+<body>
+      
+      <section style="position:fixed; top:2.5%; left:17.5%; width:78.5%; height:93.5%; margin:0 auto; border:0.5px solid black; padding:0px 15px 10px 15px;">
+      <fieldset>
+      <legend>Your info</legend>
+      UserName: {{param[0][1]}}<br>
+      UserId  : {{param[0][0]}}<br>
+      password: {{param[0][2]}}<br>
+      Other info
+      <button>
+      </fieldset>
+      </section>	
+</body>
+</html>      
+      
+      
+      
+      
